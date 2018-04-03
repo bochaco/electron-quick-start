@@ -32,6 +32,23 @@ function createWindow () {
     // when you should delete the corresponding element.
     mainWindow = null
   })
+
+  const shouldQuit = app.makeSingleInstance(function(commandLine) {
+    const resAuthUri = commandLine[2];
+    if (resAuthUri) {
+      mainWindow.webContents.send('system-uri-response', resAuthUri);
+    }
+
+    // Someone tried to run a second instance, we should focus our window
+    if (mainWindow) {
+      if (mainWindow.isMinimized()) mainWindow.restore();
+      mainWindow.focus();
+    }
+  });
+
+  if (shouldQuit) {
+    app.quit();
+  }
 }
 
 // This method will be called when Electron has finished
