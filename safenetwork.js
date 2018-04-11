@@ -1,4 +1,3 @@
-const electron = require('electron');
 const app = require('electron').remote.app;
 
 const customExecPath = [process.execPath, app.getAppPath()];

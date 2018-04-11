@@ -4,7 +4,8 @@
   "description": "A minimal SAFE App application with Electron",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "postinstall": "npm rebuild --runtime=electron --target=1.8.4 --disturl=https://atom.io/download/atom-shell --build-from-source"
   },
   "repository": "https://github.com/bochaco/safe-app-electron-quick-start",
   "keywords": [
